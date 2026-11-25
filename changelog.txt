@@ -10,6 +10,8 @@ YYYY-xx-xx - version 0.4.0
 * Dev - The `window.wcFraudProtection.prepareSessionId()` and `takePreparedSessionId()` browser methods are now part of the public API, for payment surfaces that must add the session ID synchronously.
 * Dev - The new `window.wcFraudProtection.takeSessionId()` browser method resolves to a session ID for one payment attempt and starts a fresh session for the next one, so payment surfaces no longer call `reset()` themselves, and `addSessionIdToExtensions()` adds a prepared session ID to the extension data of a Store API request, such as an express button's.
 * Dev - The `LearningModeContext` class, deprecated since 0.2.2 when the learning-mode filter stopped running, was removed.
+* Dev - The built-in payment data for Stripe and WooPayments attempts now comes through `GatewayPaymentData`, so it stands aside for the gateways for which Stripe or WooPayments register their own resolver.
+* Fixed - On the My Account "Add payment method" page, when the card that Stripe or WooPayments saves can't be confirmed as the one analyzed when it was first submitted, it is now analyzed again instead of reusing the earlier result.
 
 2026-11-23 - version 0.3.3
 * Added - New `wp wc fraud-protection payment-attempts list` and `get` commands show recorded payment attempts, and new `wp wc fraud-protection custom-rules` commands list, show, create, update, and delete custom rules. They are available when the merchant-facing features are enabled.
